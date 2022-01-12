@@ -1,6 +1,7 @@
 import React from 'react'
 
 // TODO PRICE에선 제대로 작동 X.. 쓰게 된다면 원인 파악해야함
+// 해결함!
 export default function SliderColumFilter({ column }) {
   const { filterValue, setFilter, preFilteredRows, id } = column
 
@@ -13,6 +14,7 @@ export default function SliderColumFilter({ column }) {
     })
     return [min, max]
   }, [id, preFilteredRows])
+  // console.log(min, max)
 
   return (
     <>
@@ -20,13 +22,28 @@ export default function SliderColumFilter({ column }) {
         type='range'
         min={min}
         max={max}
+        step='1000'
         value={filterValue || min}
         onClick={(e) => e.stopPropagation()}
         onChange={(e) => {
           setFilter(parseInt(e.target.value, 10))
         }}
       />
-      <button onClick={() => setFilter(undefined)}>Off</button>
+
+      <br />
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          setFilter(undefined)
+        }}
+      >
+        RESET
+      </button>
+      <p>
+        {' '}
+        {filterValue ? filterValue.toLocaleString('ko-KR') + '원' : '0원'} 이상
+        값
+      </p>
     </>
   )
 }

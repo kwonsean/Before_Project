@@ -11,6 +11,8 @@ import axios from 'axios'
 import GlobalFilter from './GlobalFilter'
 import ColumnFilter from './ColumnFilter'
 import SelectColumnFilter from './SelectColumnFilter'
+import SliderColumFilter from './SliderColumFilter'
+import { filterGreaterThan } from './filterGreaterThan'
 
 export default function ReactTable() {
   const URL = 'https://syoon0624.github.io/json/test.json'
@@ -48,7 +50,8 @@ export default function ReactTable() {
         Header: 'HISTORY',
         accessor: 'history',
         disableSortBy: true, // 정렬 쓰지 않을 행 선택 지정
-        Filter: ColumnFilter,
+        // setFilter를 사용해서 밖에서 다룰때에는 그 행에 Filter가 설정되어 있어야 된다.
+        Filter: true,
       },
       {
         Header: 'INCOME',
@@ -63,7 +66,11 @@ export default function ReactTable() {
       {
         Header: 'PRICE',
         accessor: 'price',
-        Filter: ColumnFilter,
+        Filter: SliderColumFilter,
+        // filter 기본제공 옵션
+        // https://github.com/tannerlinsley/react-table/blob/master/src/filterTypes.js
+        filter: filterGreaterThan,
+        Cell: ({ value }) => value.toLocaleString('ko-KR') + '원',
       },
     ],
     []
@@ -91,6 +98,8 @@ export default function ReactTable() {
     setGlobalFilter,
     // table 상태에 관련된 모든것
     state,
+    // !! setFilter를 이용해서 밖에서도 검색 가능 setFilter('accessor값', e.target.value)
+    setFilter,
   } = useTable(
     {
       columns,
@@ -104,9 +113,30 @@ export default function ReactTable() {
   )
   // 페이지의 index값 사용 가능
   const { pageIndex, pageSize, globalFilter } = state
+
+  const [searchOption, setSerachOption] = useState('default')
+
+  const searchData = (e) => {
+    if (searchOption === 'default') {
+      setGlobalFilter(e.target.value)
+    } else if (searchOption === 'history') {
+      setFilter('history', e.target.value)
+    } else if (searchOption === 'classify') {
+      setFilter('classify', e.target.value)
+    }
+  }
+
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <br />
+      <select onChange={(e) => setSerachOption(e.target.value)}>
+        <option value='default'>ALL</option>
+        <option value='history'>HISTORY</option>
+        <option value='classify'>CLASSIFY</option>
+      </select>
+      <input placeholder='검색' onChange={(e) => searchData(e)} />
+
       <table
         {...getTableProps()}
         style={{
@@ -127,6 +157,7 @@ export default function ReactTable() {
                     background: 'aliceblue',
                     color: 'black',
                     fontWeight: 'bold',
+                    userSelect: 'none',
                   }}
                 >
                   {column.isSorted

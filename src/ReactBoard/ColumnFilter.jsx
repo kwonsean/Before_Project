@@ -1,7 +1,10 @@
 import React from 'react'
 
 export default function ColumnFilter({ column }) {
-  const { filterValue, setFilter } = column
+  // console.log(column)
+  const { filterValue, setFilter, preFilteredRows } = column
+  const count = preFilteredRows.length
+
   return (
     <span>
       ColumnSearch:{' '}
@@ -9,6 +12,7 @@ export default function ColumnFilter({ column }) {
         value={filterValue || ''}
         onClick={(e) => e.stopPropagation()}
         onChange={(e) => setFilter(e.target.value)}
+        placeholder={`Search ${count} records...`}
       />
     </span>
   )

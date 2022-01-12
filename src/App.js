@@ -2,6 +2,7 @@ import './App.css'
 // import Chart from './Chart'
 import ReactTable from './ReactBoard/ReactTable'
 import StyledComponents1 from './Styled_Components/StyledComponents1'
+import CopyURL from './tools/CopyURL'
 // import OutsideColumnFilter from './ReactBoard/Practice/OutsideColumnFilter'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <ReactTable />
       {/* <OutsideColumnFilter /> */}
       <StyledComponents1 />
+      <CopyURL />
     </div>
   )
 }

@@ -4,7 +4,7 @@
 
 - [ ] styled-components
 - [ ] PDF로 데이터 저장하는 방법
-- [ ] 엑셀파일 읽어오기
+- [x] 엑셀파일 읽어오기
 - [x] URL 클립보드 복사 기능
 - [ ] React-query
 - [ ] REDUX
@@ -32,5 +32,3 @@
 - [stack overflow 첫번째 예시코드 확인 필요](https://stackoverflow.com/questions/30383525/defining-a-js-xlsx-cell-range)
 - [convert-excel-to-json](https://www.npmjs.com/package/convert-excel-to-json)
   > Define a sepcific Range 기능이 있음. 확인 필요
-
-

@@ -13,7 +13,7 @@ import {
   ArcElement,
   BarElement,
 } from 'chart.js'
-import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2'
+import { Line, Pie, Bar, Doughnut, Radar } from 'react-chartjs-2'
 
 ChartJS.register(
   CategoryScale,
@@ -83,7 +83,7 @@ function Chart() {
     ],
   }
 
-  return <Line data={data} width={50} height={50} />
+  return <Doughnut data={data} width={50} height={50} />
 }
 
 export default Chart

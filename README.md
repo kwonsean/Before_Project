@@ -29,5 +29,9 @@
 
 - [SheetJS](https://github.com/sheetjs/sheetjs)
   > 부분 데이터 추출 가능한지 확인 필요..
+- [stack overflow 첫번째 예시코드 확인 필요](https://stackoverflow.com/questions/30383525/defining-a-js-xlsx-cell-range)
+  > Define a sepcific Range 기능이 있음. 확인 필요
 - [convert-excel-to-json](https://www.npmjs.com/package/convert-excel-to-json)
   > Define a sepcific Range 기능이 있음. 확인 필요
+
+

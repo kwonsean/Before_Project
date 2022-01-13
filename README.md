@@ -2,14 +2,14 @@
 
 ## TODO
 
-[] styled-components  
-[] PDF로 데이터 저장하는 방법  
-[] 엑셀파일 읽어오기  
-[x] URL 클립보드 복사 기능  
-[] React-query
-[] REDUX
-[] React-router
-[] 매핑기능 구현
+- [ ] styled-components
+- [ ] PDF로 데이터 저장하는 방법
+- [ ] 엑셀파일 읽어오기
+- [x] URL 클립보드 복사 기능
+- [ ] React-query
+- [ ] REDUX
+- [ ] React-router
+- [ ] 매핑기능 구현
 
 ## 사용할 라이브러리 서치 링크 모음
 

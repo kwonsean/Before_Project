@@ -1,42 +1,54 @@
 import './App.css'
 import styled from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 
 // import Chart from './Chart'
-import ReactTable from './ReactBoard/ReactTable'
-import StyledComponents1 from './Styled_Components/StyledComponents1'
-import CopyURL from './tools/CopyURL'
-import Sheet from './Sheet_JS/Sheet'
-import SheetSetRange from './Sheet_JS/SheetSetRange'
+import Nav from './components/Nav'
+import MainPage from './components/MainPage'
 // import OutsideColumnFilter from './ReactBoard/Practice/OutsideColumnFilter'
 
 function App() {
   return (
-    <Wrapper>
-      <RigthDiv className='App'>
-        {/* <Chart /> */}
-        <ReactTable />
-        {/* <OutsideColumnFilter /> */}
-        <StyledComponents1 />
-        <CopyURL />
-      </RigthDiv>
-      <LeftDiv>
-        <Sheet />
-        <br />
-        <SheetSetRange />
-      </LeftDiv>
-    </Wrapper>
+    <>
+      <Header>This is HEADER</Header>
+      <BrowserRouter>
+        <Container>
+          <LeftNav>
+            <Nav />
+          </LeftNav>
+          <MainWrapper>
+            <MainPage />
+          </MainWrapper>
+        </Container>
+      </BrowserRouter>
+    </>
   )
 }
 
 export default App
 
-const Wrapper = styled.div`
-  display: flex;
+const Header = styled.header`
+  background-color: royalblue;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
 `
 
-const RigthDiv = styled.div`
-  width: 60%;
+const LeftNav = styled.nav`
+  background-color: salmon;
+  width: 250px;
+  float: left;
 `
-const LeftDiv = styled.div`
-  width: 40%;
+// 현재는 컨테이너를 이용하여 Nav배경을 눈속임 하고 있다.
+const Container = styled.div`
+  float: left;
+  width: 100%;
+  background: salmon;
+`
+const MainWrapper = styled.div`
+  float: left;
+  width: calc(100% - 330px);
+  background-color: yellow;
+  padding: 40px;
 `

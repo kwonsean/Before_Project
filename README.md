@@ -42,6 +42,11 @@
 
 - [요약정리본](https://dkje.github.io/2020/10/13/StyledComponents/)
 
+### REDUX
+
+- [react-REDUX 공식](https://react-redux.js.org/introduction/getting-started)
+- [Redux-toolkit 공식](https://redux-toolkit.js.org/introduction/getting-started)
+
 ### 기타
 
 - [float요소 높이 맞추기](https://medium.com/@chazwize/html-css-%EA%B0%80%EB%B3%80%EC%A0%81%EC%9D%B8-%EB%86%92%EC%9D%B4%EC%9D%98-2%EA%B0%9C%EC%9D%98-float-%EC%9A%94%EC%86%8C-%EB%86%92%EC%9D%B4-%EB%A7%9E%EC%B6%94%EA%B8%B0-552748d38ae1)

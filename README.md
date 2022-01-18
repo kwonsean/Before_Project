@@ -44,8 +44,12 @@
 
 ### REDUX
 
-- [react-REDUX 공식](https://react-redux.js.org/introduction/getting-started)
+- [React-Redux 공식](https://react-redux.js.org/introduction/getting-started)
 - [Redux-toolkit 공식](https://redux-toolkit.js.org/introduction/getting-started)
+
+### React-Query
+
+- [React-Query 공식](https://react-query.tanstack.com/overview)
 
 ### 기타
 

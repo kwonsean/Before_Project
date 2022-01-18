@@ -23,6 +23,11 @@ export default function Nav() {
           Sheet JS
         </StyledNavLink>
       </StyledLi>
+      <StyledLi>
+        <StyledNavLink end to='/query'>
+          React Query
+        </StyledNavLink>
+      </StyledLi>
     </StyledUl>
   )
 }

@@ -6,7 +6,7 @@
 - [ ] PDF로 데이터 저장하는 방법
 - [x] 엑셀파일 읽어오기
 - [x] URL 클립보드 복사 기능
-- [ ] React-query
+- [x] React-query
 - [ ] REDUX
 - [ ] React-router
 - [ ] 매핑기능 구현
@@ -50,6 +50,8 @@
 ### React-Query
 
 - [React-Query 공식](https://react-query.tanstack.com/overview)
+- [React-Query mutations](https://react-query.tanstack.com/guides/mutations)
+- [블로그 요약정리본](https://maxkim-j.github.io/posts/react-query-preview)
 
 ### 기타
 

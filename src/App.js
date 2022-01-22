@@ -5,22 +5,27 @@ import { BrowserRouter } from 'react-router-dom'
 // import Chart from './Chart'
 import Nav from './components/Nav'
 import MainPage from './components/MainPage'
+import { QueryClient, QueryClientProvider } from 'react-query'
 // import OutsideColumnFilter from './ReactBoard/Practice/OutsideColumnFilter'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
     <>
-      <Header>This is HEADER</Header>
-      <BrowserRouter>
-        <Container>
-          <LeftNav>
-            <Nav />
-          </LeftNav>
-          <MainWrapper>
-            <MainPage />
-          </MainWrapper>
-        </Container>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Header>This is HEADER</Header>
+        <BrowserRouter>
+          <Container>
+            <LeftNav>
+              <Nav />
+            </LeftNav>
+            <MainWrapper>
+              <MainPage />
+            </MainWrapper>
+          </Container>
+        </BrowserRouter>
+      </QueryClientProvider>
     </>
   )
 }

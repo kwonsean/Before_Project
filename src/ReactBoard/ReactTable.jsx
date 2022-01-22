@@ -13,29 +13,26 @@ import ColumnFilter from './ColumnFilter'
 import SelectColumnFilter from './SelectColumnFilter'
 import SliderColumFilter from './SliderColumFilter'
 import { filterGreaterThan } from './filterGreaterThan'
+import { useQuery } from 'react-query'
+
+const UseQuery = () => {
+  return axios.get('https://syoon0624.github.io/json/test.json')
+}
 
 export default function ReactTable() {
-  const URL = 'https://syoon0624.github.io/json/test.json'
-  const [bankData, setBankData] = useState([])
-
-  const getData = () => {
-    axios.get(URL).then((response) => setBankData(response.data.bankList))
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  useEffect(() => {
-    console.log(bankData)
-  }, [bankData])
+  const [isLoading, setIsLoading] = useState(true)
+  const { data: queryData } = useQuery('bank-data', UseQuery, {
+    refetchInterval: false,
+    refetchOnMount: false,
+  })
 
   const data = React.useMemo(() => {
-    const fixedData = bankData.map((item, index) => {
+    const fixedData = queryData?.data.bankList.map((item, index) => {
       return { ...item, index: index + 1 }
     })
+    setIsLoading(false)
     return fixedData
-  }, [bankData])
+  }, [queryData])
 
   const columns = React.useMemo(
     () => [
@@ -124,6 +121,10 @@ export default function ReactTable() {
     } else if (searchOption === 'classify') {
       setFilter('classify', e.target.value)
     }
+  }
+
+  if (isLoading) {
+    return <h2>Loading...</h2>
   }
 
   return (

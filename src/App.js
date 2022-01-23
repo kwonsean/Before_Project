@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Nav from './components/Nav'
 import MainPage from './components/MainPage'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 // import OutsideColumnFilter from './ReactBoard/Practice/OutsideColumnFilter'
 
 const queryClient = new QueryClient()
@@ -25,6 +26,7 @@ function App() {
             </MainWrapper>
           </Container>
         </BrowserRouter>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   )

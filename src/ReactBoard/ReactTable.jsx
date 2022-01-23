@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   useTable,
   useSortBy,
@@ -15,19 +15,31 @@ import SliderColumFilter from './SliderColumFilter'
 import { filterGreaterThan } from './filterGreaterThan'
 import { useQuery } from 'react-query'
 
-const UseQuery = () => {
+const GetBankData = () => {
   return axios.get('https://syoon0624.github.io/json/test.json')
 }
 
 export default function ReactTable() {
   const [isLoading, setIsLoading] = useState(true)
-  const { data: queryData } = useQuery('bank-data', UseQuery, {
-    refetchInterval: false,
-    refetchOnMount: false,
+  const {
+    data: queryData,
+    isSuccess,
+    isError,
+    error,
+  } = useQuery('bank-data', GetBankData, {
+    notifyOnChangeProps: ['data', 'error'],
   })
 
+  // if (isError) {
+  //   console.log(error)
+  // }
+  // if (isSuccess) {
+  //   console.log(queryData.data)
+  // }
+
   const data = React.useMemo(() => {
-    const fixedData = queryData?.data.bankList.map((item, index) => {
+    if (queryData === undefined) return []
+    const fixedData = queryData.data.bankList.map((item, index) => {
       return { ...item, index: index + 1 }
     })
     setIsLoading(false)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import ExPDF from '../FileSaver/ExPDF'
 import ReactTable from '../ReactBoard/ReactTable'
 import Example from '../react_query/Example'
 import SheetMain from '../Sheet_JS/SheetMain'
@@ -12,6 +13,7 @@ export default function MainPage() {
       <Route path='/styled' element={<StyledComponents1 />} />
       <Route path='/sheetJS' element={<SheetMain />} />
       <Route path='/query' element={<Example />} />
+      <Route path='/pdf' element={<ExPDF />} />
     </Routes>
   )
 }

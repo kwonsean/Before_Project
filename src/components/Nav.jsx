@@ -28,6 +28,11 @@ export default function Nav() {
           React Query
         </StyledNavLink>
       </StyledLi>
+      <StyledLi>
+        <StyledNavLink end to='/pdf'>
+          PDF
+        </StyledNavLink>
+      </StyledLi>
     </StyledUl>
   )
 }

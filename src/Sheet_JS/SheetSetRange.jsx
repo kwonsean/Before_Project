@@ -4,12 +4,16 @@ import XLSX from 'xlsx'
 import UserAgeChart from '../Chart/UserAgeChart'
 import UserGenderChart from '../Chart/UserGenderChart'
 import UserLocalChart from '../Chart/UserLocalChart'
+import dayjs from 'dayjs'
+
+dayjs.locale('ko')
 
 export default function SheetSetRange() {
   const [localDataList, setLocalDatatList] = useState([])
   const [ageDataList, setAgeDatatList] = useState([])
   const [genderDataList, setGenderDatatList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const Dayjs = dayjs()
 
   const excelExport = (e) => {
     let reader = new FileReader()
@@ -93,6 +97,9 @@ export default function SheetSetRange() {
             <ChartWrap>
               <UserLocalChart localData={localDataList[0]} />
             </ChartWrap>
+            <TimeStamp>{`업데이트 일자 : ${Dayjs.format(
+              'YYYY-MM-DD'
+            )}`}</TimeStamp>
           </>
         )}
       </Container>
@@ -101,11 +108,22 @@ export default function SheetSetRange() {
 }
 
 const Container = styled.div`
+  position: relative;
   background-color: white;
   display: flex;
   justify-content: center;
   border: 1px solid gray;
+  padding: 10px;
 `
 const ChartWrap = styled.div`
   width: 32%;
+`
+const TimeStamp = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  &:hover {
+    cursor: default;
+  }
 `

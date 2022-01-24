@@ -1,4 +1,4 @@
-import Chart from '../Chart.jsx'
+import Chart from '../Chart/Chart.jsx'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import React, { useRef } from 'react'

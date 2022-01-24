@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import XLSX from 'xlsx'
-import GenderChart from './GenderChart'
+import UserAgeChart from '../Chart/UserAgeChart'
+import UserGenderChart from '../Chart/UserGenderChart'
+import UserLocalChart from '../Chart/UserLocalChart'
 
 export default function SheetSetRange() {
   const [localDataList, setLocalDatatList] = useState([])
   const [ageDataList, setAgeDatatList] = useState([])
   const [genderDataList, setGenderDatatList] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const excelExport = (e) => {
     let reader = new FileReader()
@@ -15,7 +19,8 @@ export default function SheetSetRange() {
       let fileData = reader.result
       let wb = XLSX.read(fileData, { type: 'binary' })
 
-      wb.SheetNames.forEach(function (sheetName) {
+      wb.SheetNames.forEach(function (sheetName, i) {
+        if (i > 0) return
         let range = XLSX.utils.decode_range(wb.Sheets[sheetName]['!ref'])
 
         // 지역 데이터 담기
@@ -62,20 +67,45 @@ export default function SheetSetRange() {
 
         setGenderDatatList((cur) => [...cur, genderData])
       })
+      setIsLoading()
     }
   }
 
   useEffect(() => {
-    console.log('localDataList', localDataList)
+    console.log('localDataList', localDataList[0])
     console.log('ageDataList', ageDataList)
     console.log('genderDataList', genderDataList)
-  }, [localDataList, ageDataList, genderDataList])
+  }, [isLoading])
 
   return (
     <>
       원하는 구역 설정 도전 :{' '}
       <input type='file' onChange={(e) => excelExport(e)} />
-      {/* <GenderChart genderData={genderDataList[0]} /> */}
+      <Container>
+        {isLoading ? null : (
+          <>
+            <ChartWrap>
+              <UserGenderChart genderData={genderDataList[0]} />
+            </ChartWrap>
+            <ChartWrap>
+              <UserAgeChart ageData={ageDataList[0]} />
+            </ChartWrap>
+            <ChartWrap>
+              <UserLocalChart localData={localDataList[0]} />
+            </ChartWrap>
+          </>
+        )}
+      </Container>
     </>
   )
 }
+
+const Container = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border: 1px solid gray;
+`
+const ChartWrap = styled.div`
+  width: 32%;
+`

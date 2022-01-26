@@ -10,6 +10,7 @@ export default function Nav() {
     <StyledUl>
       <StyledLi>
         <StyledNavLink end to='/'>
+          <OutlinedIcon iconName='settings' />
           React Table
         </StyledNavLink>
       </StyledLi>
@@ -46,7 +47,8 @@ const StyledLi = styled.li`
   margin-bottom: 20px;
 `
 const StyledNavLink = styled(NavLink)`
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 10px 20px;
   text-decoration: none;
   font-weight: 500;
@@ -66,3 +68,22 @@ const StyledNavLink = styled(NavLink)`
     color: #5f0000;
   }
 `
+const OutlinedIcon = styled.i.attrs(() => ({
+  className: 'material-icons-outlined',
+}))`
+  font-size: 20px;
+  margin-right: 8px;
+  font-weight: 400;
+  &:after {
+    content: 'settings';
+    /* content: ${({ iconName }) => iconName || 'settings'}; */
+  }
+`
+// const ThumbUp = styled.i.attrs(() => ({
+//   className: 'material-icons-outlined',
+// }))`
+//   font-size: 14px;
+//   &:after {
+//     content: 'settings';
+//   }
+// `

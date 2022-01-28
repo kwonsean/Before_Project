@@ -14,6 +14,7 @@ import SelectColumnFilter from './SelectColumnFilter'
 import SliderColumFilter from './SliderColumFilter'
 import { filterGreaterThan } from './filterGreaterThan'
 import { useQuery } from 'react-query'
+import SelectedTable from './Practice/SelectedTable'
 
 const GetBankData = () => {
   return axios.get('https://syoon0624.github.io/json/test.json')
@@ -250,6 +251,8 @@ export default function ReactTable() {
           {'>>'}
         </button>
       </div>
+      <br />
+      <SelectedTable />
     </>
   )
 }
